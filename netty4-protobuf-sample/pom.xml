@@ -12,17 +12,28 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<netty.version>4.1.10.Final</netty.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>io.netty</groupId>
 				<artifactId>netty</artifactId>
-				<version>4.1.10.Final</version>
+				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.protobuf</groupId>
+				<artifactId>protobuf-java</artifactId>
+				<version>2.4.1</version>
 			</dependency>
 			<dependency>
 				<groupId>com.pactrex</groupId>
 				<artifactId>netty4-protobuf-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pactrex</groupId>
+				<artifactId>netty4-protobuf-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
@@ -32,5 +43,6 @@
 		<module>netty4-protobuf-model</module>
 		<module>netty4-protobuf-server</module>
 		<module>netty4-protobuf-client</module>
+		<module>netty4-protobuf-common</module>
 	</modules>
 </project>

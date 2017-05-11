@@ -13,6 +13,7 @@
 		<module>netty3-app-client</module>
 		<module>netty3-app-server</module>
 		<module>netty3-app-model</module>
+		<module>netty3-app-common</module>
 	</modules>
 
 	<dependencyManagement>
@@ -24,6 +25,11 @@
 			<dependency>
 				<groupId>com.pactrex</groupId>
 				<artifactId>netty3-app-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pactrex</groupId>
+				<artifactId>netty3-app-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

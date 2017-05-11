@@ -1,4 +1,4 @@
-package com.pactrex.codec;
+package com.pactrex.common.codec;
 import com.pactrex.common.codec.ConstantValue;
 import com.pactrex.common.model.Response;
 

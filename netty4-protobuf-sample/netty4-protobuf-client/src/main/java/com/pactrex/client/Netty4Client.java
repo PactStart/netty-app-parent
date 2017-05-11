@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.pactrex.client.swing.Swingclient;
-import com.pactrex.codec.RequestEncoder;
-import com.pactrex.codec.ResponseDecoder;
+import com.pactrex.common.codec.RequestEncoder;
+import com.pactrex.common.codec.ResponseDecoder;
 import com.pactrex.common.model.Request;
 
 import io.netty.bootstrap.Bootstrap;

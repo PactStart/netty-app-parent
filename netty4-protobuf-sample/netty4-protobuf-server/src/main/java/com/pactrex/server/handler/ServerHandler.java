@@ -12,6 +12,7 @@ import com.pactrex.common.session.Session;
 import com.pactrex.common.session.SessionImpl;
 import com.pactrex.common.session.SessionManager;
 import com.pactrex.model.ModuleId;
+import com.pactrex.server.module.player.dao.entity.Player;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -59,7 +60,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
 						result = (Result<?>)invoker.invoke(player.getPlayerId(), request.getData());
 					}else{
 						//会话未登录拒绝请求
-						response.setStateCode(ResultCode.LOGIN_PLEASE);
+						response.setResultCode(ResultCode.LOGIN_PLEASE);
 						session.write(response);
 						return;
 					}
@@ -83,19 +84,19 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
 					session.write(response);
 				}else{
 					//返回错误码
-					response.setStateCode(result.getResultCode());
+					response.setResultCode(result.getResultCode());
 					session.write(response);
 					return;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				//系统未知异常
-				response.setStateCode(ResultCode.UNKOWN_EXCEPTION);
+				response.setResultCode(ResultCode.UNKOWN_EXCEPTION);
 				session.write(response);
 			}
 		}else{
 			//未找到执行者
-			response.setStateCode(ResultCode.NO_INVOKER);
+			response.setResultCode(ResultCode.NO_INVOKER);
 			session.write(response);
 			return;
 		}

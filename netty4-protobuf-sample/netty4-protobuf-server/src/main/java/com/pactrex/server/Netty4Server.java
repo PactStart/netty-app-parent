@@ -9,8 +9,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.springframework.stereotype.Component;
 
-import com.pactrex.codec.RequestDecoder;
-import com.pactrex.codec.ResponseEncoder;
+import com.pactrex.common.codec.RequestDecoder;
+import com.pactrex.common.codec.ResponseEncoder;
 import com.pactrex.server.handler.ServerHandler;
 
 @Component

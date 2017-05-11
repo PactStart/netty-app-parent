@@ -1,4 +1,4 @@
-package com.pactrex.codec;
+package com.pactrex.common.codec;
 
 import java.util.List;
 

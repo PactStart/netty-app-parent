@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.pactrex</groupId>
-			<artifactId>netty-app-common</artifactId>
+			<artifactId>netty4-protobuf-common</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
