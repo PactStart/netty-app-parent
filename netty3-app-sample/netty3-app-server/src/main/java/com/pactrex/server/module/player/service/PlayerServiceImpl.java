@@ -21,7 +21,7 @@ public class PlayerServiceImpl implements PlayerService {
 	private PlayerDao playerDao;
 
 	@Override
-	public PlayerResponse registerAndLogin(Session session, String playerName, String passward) {
+	public PlayerResponse registerAndLogin(Session session, String playerName, String password) {
 
 		Player existplayer = playerDao.getPlayerByName(playerName);
 
@@ -33,15 +33,15 @@ public class PlayerServiceImpl implements PlayerService {
 		// 创建新帐号
 		Player player = new Player();
 		player.setPlayerName(playerName);
-		player.setPassward(passward);
+		player.setPassword(password);
 		player = playerDao.createPlayer(player);
 
 		//顺便登录
-		return login(session, playerName, passward);
+		return login(session, playerName, password);
 	}
 
 	@Override
-	public PlayerResponse login(Session session, String playerName, String passward) {
+	public PlayerResponse login(Session session, String playerName, String password) {
 
 		// 判断当前会话是否已登录
 		if (session.getAttachment() != null) {
@@ -55,7 +55,7 @@ public class PlayerServiceImpl implements PlayerService {
 		}
 
 		// 密码错误
-		if (!player.getPassward().equals(passward)) {
+		if (!player.getPassword().equals(password)) {
 			throw new ErrorCodeException(ResultCode.PASSWARD_ERROR);
 		}
 

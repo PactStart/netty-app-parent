@@ -22,7 +22,7 @@ public class ChatResponse extends Serializer{
 	/**
 	 * 目标玩家
 	 */
-	private String tartgetPlayerName;
+	private String targetPlayerName;
 	
 	/**
 	 * 消息类型
@@ -36,14 +36,13 @@ public class ChatResponse extends Serializer{
 	 * 消息
 	 */
 	private String message;
-
 	
-	public String getTartgetPlayerName() {
-		return tartgetPlayerName;
+	public String getTargetPlayerName() {
+		return targetPlayerName;
 	}
 
-	public void setTartgetPlayerName(String tartgetPlayerName) {
-		this.tartgetPlayerName = tartgetPlayerName;
+	public void setTargetPlayerName(String targetPlayerName) {
+		this.targetPlayerName = targetPlayerName;
 	}
 
 	public String getMessage() {
@@ -82,7 +81,7 @@ public class ChatResponse extends Serializer{
 	protected void read() {
 		this.sendPlayerId = readLong();
 		this.sendPlayerName = readString();
-		this.tartgetPlayerName = readString();
+		this.targetPlayerName = readString();
 		this.chatType = readByte();
 		this.message = readString();
 	}
@@ -91,7 +90,7 @@ public class ChatResponse extends Serializer{
 	protected void write() {
 		writeLong(this.sendPlayerId);
 		writeString(this.sendPlayerName);
-		writeString(this.tartgetPlayerName);
+		writeString(this.targetPlayerName);
 		writeByte(this.chatType);
 		writeString(this.message);
 	}

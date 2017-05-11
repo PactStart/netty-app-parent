@@ -58,7 +58,7 @@ public class ChatHandlerImpl implements ChatHandler{
 			if(swingclient.getPlayerResponse().getPlayerId() == chatResponse.getSendPlayerId()){
 				builder.append("您悄悄对 ");
 				builder.append("[");
-				builder.append(chatResponse.getTartgetPlayerName());
+				builder.append(chatResponse.getTargetPlayerName());
 				builder.append("]");
 				builder.append(" 说:\n\t");
 				builder.append(chatResponse.getMessage());

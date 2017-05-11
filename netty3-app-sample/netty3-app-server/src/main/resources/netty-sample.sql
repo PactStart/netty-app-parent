@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
   `playerId` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `playerName` varchar(255) DEFAULT NULL,
-  `passward` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `level` varchar(255) DEFAULT NULL,
   `exp` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`playerId`)

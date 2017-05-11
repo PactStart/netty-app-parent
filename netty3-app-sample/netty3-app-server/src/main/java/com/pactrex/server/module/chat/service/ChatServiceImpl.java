@@ -72,7 +72,7 @@ public class ChatServiceImpl implements ChatService{
 		chatResponse.setChatType(ChatType.PRIVATE_CHAT);
 		chatResponse.setSendPlayerId(player.getPlayerId());
 		chatResponse.setSendPlayerName(player.getPlayerName());
-		chatResponse.setTartgetPlayerName(targetPlayer.getPlayerName());
+		chatResponse.setTargetPlayerName(targetPlayer.getPlayerName());
 		chatResponse.setMessage(content);
 		
 		//给目标对象发送消息
