@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pactrex</groupId>
+		<artifactId>netty-app-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>netty4-protobuf-sample</artifactId>
+	<name>netty4-protobuf-sample</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty</artifactId>
+				<version>4.1.10.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pactrex</groupId>
+				<artifactId>netty4-protobuf-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<packaging>pom</packaging>
+	<modules>
+		<module>netty4-protobuf-model</module>
+		<module>netty4-protobuf-server</module>
+		<module>netty4-protobuf-client</module>
+	</modules>
+</project>
