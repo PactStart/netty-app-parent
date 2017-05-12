@@ -1,46 +1,40 @@
 package com.pactrex.server;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import org.springframework.stereotype.Component;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
-import com.pactrex.common.codec.RequestDecoder;
-import com.pactrex.common.codec.ResponseEncoder;
-import com.pactrex.server.handler.ServerHandler;
+public class Server {
 
-@Component
-public class Netty4Server {
-
-	/**
-	 * 启动
-	 */
-	public void start() {
-
+	public static void main(String[] args) {
 		// 服务类
 		ServerBootstrap bootstrap = new ServerBootstrap();
 
-		// 创建boss和worker
-		EventLoopGroup bossGroup = new NioEventLoopGroup();
-		EventLoopGroup workerGroup = new NioEventLoopGroup();
+		// boss和worker
+		EventLoopGroup boss = new NioEventLoopGroup();
+		EventLoopGroup worker = new NioEventLoopGroup();
 
 		try {
-			// 设置循环线程组事例
-			bootstrap.group(bossGroup, workerGroup);
+			// 设置线程池
+			bootstrap.group(boss, worker);
 
-			// 设置channel工厂
+			// 设置socket工厂、
 			bootstrap.channel(NioServerSocketChannel.class);
 
-			// 设置管道
-			bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
+			// 设置管道工厂
+			bootstrap.childHandler(new ChannelInitializer<Channel>() {
+
 				@Override
-				public void initChannel(SocketChannel ch) throws Exception {
-					ch.pipeline().addLast(new RequestDecoder());
-					ch.pipeline().addLast(new ResponseEncoder());
+				protected void initChannel(Channel ch) throws Exception {
+					ch.pipeline().addLast(new StringDecoder());
+					ch.pipeline().addLast(new StringEncoder());
 					ch.pipeline().addLast(new ServerHandler());
 				}
 			});
@@ -55,12 +49,19 @@ public class Netty4Server {
 			bootstrap.childOption(ChannelOption.TCP_NODELAY, true);// socketchannel的设置,关闭延迟发送
 
 			// 绑定端口
-			bootstrap.bind(10102).sync();
+			ChannelFuture future = bootstrap.bind(10101);
 
-			System.out.println("netty4 server start!");
+			System.out.println("start");
+
+			// 等待服务端关闭
+			future.channel().closeFuture().sync();
+
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			// 释放资源
+			boss.shutdownGracefully();
+			worker.shutdownGracefully();
 		}
 	}
-
 }

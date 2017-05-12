@@ -12,6 +12,9 @@
 
 	<modules>
 		<module>netty-app-common</module>
+    <module>tiny-netty3</module>
+    <module>bio-nio-aio</module>
+    <module>netty4-sample</module>
   </modules>
 
 	<dependencyManagement>
